@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create Offers Table
+      author: Shamil Vasanov
+      changes:
+        - createTable:
+            tableName: offers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: term
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: monthly_payment
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric(16,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: accepted
+                  type: bool
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credit_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_offers_credits
+                    references: credits(id)
+                    nullable: false
+            remarks: Table to store information about offers
